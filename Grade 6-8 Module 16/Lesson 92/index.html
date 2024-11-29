@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Carousel</title>
+  <style>
+    body {
+      background-color: #deb878;
+    }
+    h1 {
+      text-align: center;
+      text-decoration: underline;
+      text-transform: capitalize;
+    }
+    .carousel-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 300px; /* Adjust based on your image height */
+      overflow: hidden; /* Hide overflow to ensure images don't go outside the container */
+    }
+    /* Hide all slides by default */
+    .myslides {
+      display: none;
+      max-height: 100%; /* Ensure images fit within container */
+      max-width: 100%;
+    }
+    .active {
+      display: block; /* Show active slide */
+    }
+  </style>
+</head>
+<body>
+  <h1>My Favorite Places</h1>
+ 
+  <div class="carousel-container">
+    <img class="myslides active" src="pic1.jpg" height="300" width="300" alt="Slide 1">
+    <img class="myslides" src="pic2.jpg" height="300" width="300" alt="Slide 2">
+    <img class="myslides" src="pic3.jpg" height="300" width="300" alt="Slide 3">
+  </div>
+
+  <script>
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.myslides');
+
+    function showSlides() {
+      // Hide all slides
+      slides.forEach(slide => {
+        slide.classList.remove('active');
+      });
+      
+      // Move to the next slide
+      slideIndex++;
+      if (slideIndex >= slides.length) {
+        slideIndex = 0; // Loop back to the first slide
+      }
+
+      // Show the current slide
+      slides[slideIndex].classList.add('active');
+
+      // Change slide every 3 seconds
+      setTimeout(showSlides, 3000);
+    }
+
+    // Start the slideshow
+    showSlides();
+  </script>
+</body>
+</html>
